@@ -2,12 +2,6 @@ const models = require('../models');
 const config = require('../config/config');
 const utils = require('../utils');
 
-const levels = ['Junior Chef',
-                'Station Chef',
-                'Steff Chef',
-                'Deputy Chef',
-                'Head Chef',
-                'Executive Chef']
 
 module.exports = {
     get: (req, res, next) => {

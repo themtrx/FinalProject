@@ -1,15 +1,36 @@
 const models = require('../models');
 
-module.exports = {
-    get: (req, res, next) => {
+const levels = ['Junior Chef',
+                'Station Chef',
+                'Steff Chef',
+                'Deputy Chef',
+                'Head Chef',
+                'Executive Chef']
 
-        // const limit = req.query.count ? Number(req.query.count) : 20
-        
-        models.Meal.find({"published":true}).populate('author', '_id username')
+module.exports = {
+    get:{
+        published : (req, res, next) => {
+            models.Meal.find({"published":true}).populate('author', '_id username')
             .then((meals) => res.send(meals))
             .catch(next);
+        },
+        getUnpublished: (req, res, next) => {
+        
+            const userLevel = req.user.level
+    
+            models.Meal.find({"published":false}).populate('author', '_id username')
+                .then((meals) => Promise.all([meals, userLevel]))
+                .then(([meals, userLevel]) => {
+                    if(!levels.includes(userLevel)){
+                        res.status(401).send('Minimum level Junior Chef');
+                        return;
+                    }
+    
+                    res.send(meals)
+                })
+                .catch(next);
+        }
     },
-
     post: (req, res, next) => {
 
         const {
