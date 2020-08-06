@@ -1,3 +1,25 @@
 REST API/node_modules
 REST API/.env
 REST API/.vscode
+
+# dependencies
+uni-soft-meal/node_modules
+uni-soft-meal/.pnp
+uni-soft-meal.pnp.js
+
+# testing
+uni-soft-meal/coverage
+
+# production
+uni-soft-meal/build
+
+# misc
+uni-soft-meal/.DS_Store
+uni-soft-meal/.env.local
+uni-soft-meal/.env.development.local
+uni-soft-meal/.env.test.local
+uni-soft-meal/.env.production.local
+
+uni-soft-meal/npm-debug.log*
+uni-soft-meal/yarn-debug.log*
+uni-soft-meal/yarn-error.log*
