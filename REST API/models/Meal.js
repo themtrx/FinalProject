@@ -49,7 +49,6 @@ const mealSchema = new Schema({
         type: Boolean,
         default: false
     }
-
 });
 
 module.exports = new Model('Meal', mealSchema);

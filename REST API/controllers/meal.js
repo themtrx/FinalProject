@@ -3,9 +3,9 @@ const models = require('../models');
 module.exports = {
     get: (req, res, next) => {
 
-        const limit = req.query.count ? Number(req.query.count) : 20
+        // const limit = req.query.count ? Number(req.query.count) : 20
         
-        models.Meal.find().limit(limit).populate('author')
+        models.Meal.find({"published":true}).populate('author', '_id username')
             .then((meals) => res.send(meals))
             .catch(next);
     },
