@@ -1,0 +1,17 @@
+.header {
+    text-align: left;
+}
+
+.header::after {
+    content: '';
+    display: block;
+    width: 80%;
+    border-bottom: 2px solid black;
+    margin: 0 auto;
+    padding: 10px;
+    clear: both;
+}
+
+.navigation {
+    float: left;
+}

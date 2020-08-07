@@ -1,0 +1,12 @@
+.navigation {
+    margin-top: 60px;
+    margin-left: 5%;
+    display: flex;
+    flex-wrap: wrap;
+    float: left;
+}
+.link-add-style {
+    text-decoration: none;
+    padding: 10px;
+    font-size: 1.2rem;
+}
