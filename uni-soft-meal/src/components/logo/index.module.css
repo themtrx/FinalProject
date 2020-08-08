@@ -18,3 +18,9 @@
     margin: 0 30px;
     color: #615e5e;
 }
+
+@media only screen and (max-width: 1024px) {
+    .container {
+        float: none;
+    }
+  }
