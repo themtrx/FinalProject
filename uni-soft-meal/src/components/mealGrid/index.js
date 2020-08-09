@@ -18,7 +18,6 @@ class MealGrid extends Component {
                 this.setState({
                     meals
                 })
-                console.log(meals);
             })
             .catch((err) => console.log(err))
     }

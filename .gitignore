@@ -5,6 +5,7 @@ REST API/.vscode
 
 # dependencies
 uni-soft-meal/node_modules
+uni-soft-meal/node_modules/react-rating-stars-component
 uni-soft-meal/.pnp
 uni-soft-meal.pnp.js
 

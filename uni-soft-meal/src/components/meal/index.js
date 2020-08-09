@@ -9,7 +9,7 @@ const Meal = ({imgUrl, title, category, raiting, id, key}) => {
                 <img src={imgUrl} alt=""/>
                 <h3>{title}</h3>
                 <h4>{category}</h4>
-                <ReactStars size='30' value={raiting} edit={false}/>
+                <ReactStars size={30} value={raiting} edit={false}/>
             </a>
         </article>
     )
