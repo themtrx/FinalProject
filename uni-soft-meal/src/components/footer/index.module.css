@@ -1,6 +1,9 @@
 .footer {
     color: #8f8f8f;
 }
+.footer p {
+    text-align: center;
+}
 
 .footer::before {
     content: '';

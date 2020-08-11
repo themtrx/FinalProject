@@ -1,0 +1,18 @@
+.formWrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.imgSide {
+    text-align: center;
+}
+
+.imgSide img {
+    width: 350px;
+    height: auto;
+}
+
+.formSide form{
+    display: flex;
+    flex-direction: column;
+}
