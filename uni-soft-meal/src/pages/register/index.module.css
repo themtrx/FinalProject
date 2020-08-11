@@ -1,0 +1,22 @@
+.formContainer {
+    width: 50%;
+    margin: 70px auto;
+}
+.formContainer button, .formContainer div{
+    align-self: center;
+}
+
+.formContainer div > * {
+    display: inline-block;
+    font-size: 0.9rem;
+}
+
+.formContainer div a {
+    margin-left: 5px;
+    text-decoration: none;
+    color: #000;
+}
+
+.formContainer div a:hover{
+    color: #f0803d;
+}
