@@ -5,14 +5,16 @@ import {
     Route
 } from 'react-router-dom'
 import Home from './pages/home'
+import Register from './pages/register'
+import Login from './pages/login'
 
 const Routing = () => {
     return (
         <BrowserRouter>
             <Switch>
                 <Route path='/' exact component={Home}/>
-                <Route path='/user/login'/>
-                <Route path='/user/register'/>
+                <Route path='/user/login' component={Login}/>
+                <Route path='/user/register'component={Register}/>
             </Switch>
         </BrowserRouter>
     )
