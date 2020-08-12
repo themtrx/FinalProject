@@ -4,7 +4,7 @@ const { auth } = require('../utils');
 
 router.get('/', controllers.meal.get.published);
 
-router.get('/unpublished', auth(), controllers.meal.get.getUnpublished);
+router.get('/unpublished', controllers.meal.get.getUnpublished); // implement auth() for user check
 
 router.post('/', auth(), controllers.meal.post);
 

@@ -6,7 +6,7 @@ const Nav = () => {
     return (
         <nav className={style.navigation}>
             <SiteLink addClass={style['link-add-style']} href='/' title='Home'/>
-            <SiteLink addClass={style['link-add-style']} href='#' title='New Meals'/>
+            <SiteLink addClass={style['link-add-style']} href='/meals/unpublished' title='Unpublished'/>
             <SiteLink addClass={style['link-add-style']} href='#' title='Add Meal'/>
             <SiteLink addClass={style['link-add-style']} href='#' title='Chefs'/>
             <SiteLink addClass={style['link-add-style']} href='#' title='My Profile'/>
