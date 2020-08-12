@@ -12,7 +12,7 @@ class MealGrid extends Component {
     }
 
     getMeals() {
-        fetch('http://localhost:9999/api/meal')
+        fetch(this.props.fetchURL)
             .then((meals) => meals.json())
             .then((meals) => {
                 this.setState({
@@ -33,11 +33,12 @@ class MealGrid extends Component {
             return(
                 <Fragment key={index}>
                     <Meal
-                        id={meal._id} //meal.id
+                        id={meal._id}
                         imgUrl='https://via.placeholder.com/450x250'
                         title={meal.title}
                         category={meal.category}
                         raiting={2.5} //meal.raiting
+                        mealURL={this.props.mealURL}
                     />
                 </Fragment>
             )

@@ -16,16 +16,22 @@ module.exports = {
         },
         getUnpublished: (req, res, next) => {
         
-            const userLevel = req.user.level
+            // const userLevel = req.user.level
     
-            models.Meal.find({"published":false}).populate('author', '_id username')
-                .then((meals) => Promise.all([meals, userLevel]))
-                .then(([meals, userLevel]) => {
-                    if(!levels.includes(userLevel)){
-                        res.status(401).send('Minimum level Junior Chef');
-                        return;
-                    }
+            // models.Meal.find({"published":false}).populate('author', '_id username')
+            //     .then((meals) => Promise.all([meals, userLevel]))
+            //     .then(([meals, userLevel]) => {
+            //         if(!levels.includes(userLevel)){
+            //             res.status(401).send('Minimum level Junior Chef');
+            //             return;
+            //         }
     
+            //         res.send(meals)
+            //     })
+            //     .catch(next);
+
+             models.Meal.find({"published":false}).populate('author', '_id username')
+                .then((meals) => {
                     res.send(meals)
                 })
                 .catch(next);
@@ -43,7 +49,6 @@ module.exports = {
             ingredients,
             preparation,
         } = req.body;
-        console.log(title);
         const { _id } = req.user;
 
         models.Meal.create({ 
@@ -57,7 +62,6 @@ module.exports = {
             preparation,
             author: _id })
             .then((createdMeal) => {
-                console.log(createdMeal);
                 return Promise.all([
                     models.User.updateOne({ _id }, { $push: { meals: createdMeal } }),
                     models.Meal.findOne({ _id: createdMeal._id })
