@@ -1,6 +1,6 @@
 export default (reqURL, body, history, redirectPath) => {
 
-        fetch(reqURL, {
+       return fetch(reqURL, {
             method: 'POST',
             body: JSON.stringify(body),
             headers: {
@@ -16,8 +16,8 @@ export default (reqURL, body, history, redirectPath) => {
 
             if(currentUser && auth){
                 document.cookie = `x-auth-token=${auth}`
-               history.push(redirectPath)
+                return currentUser
             }
 
-        }).catch(err => console.log(err))
+        })
 }

@@ -1,12 +1,13 @@
 import React from 'react'
 import style from './index.module.css'
+import { Link } from 'react-router-dom'
 
-const SiteLinks = ({href, title, addClass}) => {
+const SiteLinks = ({href, title, addClass, onClick}) => {
 
     return (
-        <a className={[style.link, addClass].join(' ')} href={href}>
+        <Link className={[style.link, addClass].join(' ')} to={href} onClick={onClick}>
             {title}
-        </a>
+        </Link>
     )
 
 }

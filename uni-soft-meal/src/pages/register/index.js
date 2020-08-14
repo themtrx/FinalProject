@@ -7,7 +7,8 @@ import SiteLinks from '../../components/link'
 import Button from '../../components/button'
 
 import registerImage from '../../images/undraw_cooking_lyxy.png'
-import authRequest from '../../utils/auth'
+import authRequest from '../../services/auth'
+import UserContext from '../../services/context'
 
 
 class Register extends Component {
@@ -20,6 +21,8 @@ class Register extends Component {
             rePassword: ''
         }
     }
+
+    static contextType = UserContext
 
     onChange(event, type){
         const newState = {}
@@ -35,11 +38,12 @@ class Register extends Component {
             password,
         } =  this.state
 
-        authRequest(
-            'http://localhost:9999/api/user/register',
-            {username, password},
-            this.props.history,
-            '/')
+        authRequest('http://localhost:9999/api/user/register',{username, password})
+        .then((user) => {
+            this.context.logIn(user)
+            this.props.history.push('/')
+        })
+        .catch((err) => console.log(err))
     }
 
     render(){

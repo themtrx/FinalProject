@@ -1,0 +1,12 @@
+.errorPage {
+    text-align: center;
+}
+
+.errorPage h3{
+    font-size: 1.5rem;
+}
+
+.errorPage img{
+    max-width: 300px;
+    height: auto;
+}

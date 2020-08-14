@@ -7,7 +7,8 @@ import SiteLinks from '../../components/link'
 import style from './index.module.css'
 
 import formImage from '../../images/Login.png'
-import authRequest from '../../utils/auth'
+import authRequest from '../../services/auth'
+import UserContext from '../../services/context'
 
 
 class Login extends Component {
@@ -19,6 +20,8 @@ class Login extends Component {
             password: ''
         }
     }
+
+    static contextType = UserContext
 
     onChange(event, type){
         const newState = {}
@@ -34,11 +37,12 @@ class Login extends Component {
             password
         } =  this.state
 
-        authRequest(
-            'http://localhost:9999/api/user/login',
-            {username, password},
-            this.props.history,
-            '/')
+        authRequest('http://localhost:9999/api/user/login', {username, password})
+        .then((user) => {
+            this.context.logIn(user)
+            this.props.history.push('/')
+        })
+        .catch((err) => console.log(err))
     }
 
     render(){
