@@ -4,3 +4,19 @@
     column-gap: 5%;
     row-gap: 50px;
 }
+
+.noMeals {
+    text-align: center;
+}
+
+.noMeals h3{
+    text-align: center;
+}
+
+.noMeals a{
+    color: #000;
+}
+
+.noMeals a:hover {
+    color: #ef6c5c;
+}
