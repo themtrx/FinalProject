@@ -21,10 +21,11 @@ module.exports = {
     post: {
         register: (req, res, next) => {
             const { username, password } = req.body;
+            
             models.User.create({ username, password })
                 .then((createdUser) =>{
                     const token = utils.jwt.createToken({ id: createdUser._id });
-                    res.cookie(config.authCookieName, token).send(createdUser);
+                    res.header('Authorization', token).send(createdUser);
                 })
                 .catch(next)
         },
