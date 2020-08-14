@@ -29,9 +29,21 @@ class MealGrid extends Component {
     renderMeals() {
         const {meals} = this.state
 
+        if(meals.length<=0){
+            return (
+                <div className={style.noMeals}>
+                    <h3>There are no meals yet...</h3>
+                    <p>
+                        {/* <a href="">Register</a> and add new meal. */}
+                        Go and <a href="">add new meal</a>
+                    </p>
+                </div>
+            )
+        }
+
        return meals.map((meal, index) =>{
             return(
-                <Fragment key={index}>
+                <div  key={index}>
                     <Meal
                         id={meal._id}
                         imgUrl='https://via.placeholder.com/450x250'
@@ -40,12 +52,13 @@ class MealGrid extends Component {
                         raiting={2.5} //meal.raiting
                         mealURL={this.props.mealURL}
                     />
-                </Fragment>
+                </div>
             )
         })
     }
 
     render(){
+
         return(
             <div className={style.mealGrid}>
                 {this.renderMeals()}
