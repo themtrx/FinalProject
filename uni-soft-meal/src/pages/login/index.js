@@ -7,6 +7,7 @@ import SiteLinks from '../../components/link'
 import style from './index.module.css'
 
 import formImage from '../../images/Login.png'
+import authRequest from '../../utils/auth'
 
 
 class Login extends Component {
@@ -33,34 +34,15 @@ class Login extends Component {
             password
         } =  this.state
 
-        fetch('http://localhost:9999/api/user/login', {
-            method: 'POST',
-            body: JSON.stringify({
-                username,
-                password
-            }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then((res) => 
-                Promise.all([
-                    res.json(),
-                    res.headers.get('Authorization')
-                ])
-            )
-        .then(([currentUser, auth]) => {
-
-            if(currentUser && auth){
-                document.cookie = `x-auth-token=${auth}`
-                this.props.history.push('/')
-            }
-        })
-        .catch((err) => console.log(err))
-
+        authRequest(
+            'http://localhost:9999/api/user/login',
+            {username, password},
+            this.props.history,
+            '/')
     }
 
     render(){
-        console.log(this.state);
+        
         return(
             <Wrapper>
                 <FormWrap imgUrl={formImage}>
