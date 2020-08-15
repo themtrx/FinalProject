@@ -6,6 +6,7 @@ import MealGrid from '../../components/mealGrid'
 
 import noAvatar from '../../images/avatar.png'
 import style from './index.module.css'
+import Button from '../../components/button';
 
 
 
@@ -81,7 +82,7 @@ const ProfilePage = () => {
                     <TabPanel>
                         <div className={style.profileInfo}>
                             <img src={`${avatar}`} alt=""/>
-                            <button onClick={openWidget}>Upload Image </button>
+                            <Button handleClick={openWidget} name='Upload Image'/>
                             <h3>{username}</h3>
                             <h4><span>Chef level: </span> {level}</h4>
                             <p><span>Meals Count: </span>{meals? meals.length: 0}</p>

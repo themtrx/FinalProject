@@ -28,14 +28,13 @@ const mealSchema = new Schema({
         type: String,
         required: true
     },
-    ingredients: [{
-        ingred: String,
-        measureType: String,
-        measure: Number
-    }],
-    preparation: [{
+    imgUrl: {
+        type: String,
+        required: true
+    },
+    preparation: {
         type: String
-    }],
+    },
     raiting: {
         type: Number,
         max: 5,

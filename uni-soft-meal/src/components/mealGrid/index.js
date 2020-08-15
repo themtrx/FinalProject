@@ -55,7 +55,7 @@ class MealGrid extends Component {
                 <div  key={index}>
                     <Meal
                         id={meal._id}
-                        imgUrl='https://via.placeholder.com/450x250'
+                        imgUrl={meal.imgUrl}
                         title={meal.title}
                         category={meal.category}
                         raiting={meal.raiting} 
