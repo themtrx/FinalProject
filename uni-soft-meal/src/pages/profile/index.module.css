@@ -1,0 +1,48 @@
+.profile ul{
+    display: flex;
+}
+
+.profile ul li{
+    padding-right: 20px;
+    padding-bottom: 5px;
+    list-style: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-bottom: 2px solid #615e5e;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.profile ul li:hover {
+    color: #ef6c5c;
+}
+
+.activeTab {
+    border-bottom: 2px solid #ef6c5c !important;
+}
+
+.profileInfo {
+    text-align: center;
+}
+
+
+
+.profileInfo img{
+    display: block;
+    max-width: 300px;
+    height: auto;
+    margin: 10px auto;
+}
+
+.meals {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.meals a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding-right: 5px;
+}

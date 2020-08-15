@@ -4,19 +4,15 @@ const utils = require('../utils');
 
 
 module.exports = {
-    get: (req, res, next) => {
-
-        models.User.find().select("username level")
-            .then((users) => Promise.all([users, req.user.isAdmin]))
-            .then(([users, isAdmin]) => {
-                if(!isAdmin){
-                    res.status(401).send('No Permission');
-                    return;
-                }
-
-                res.send(users)
-            })
-            .catch(next)
+    get: {
+        currentUser: (req, res, next) => {
+            const id = req.params.id;
+            models.User.findById(id).populate('meals').lean()
+                .then((user) => {
+                    res.send(user)
+                })
+                .catch(next)
+            }
     },
     post: {
         register: (req, res, next) => {
@@ -89,8 +85,8 @@ module.exports = {
 
     put: (req, res, next) => {
         const id = req.params.id;
-        const { username, password } = req.body;
-        models.User.update({ _id: id }, { username, password })
+        const { avatar } = req.body;
+        models.User.update({ _id: id }, { avatar })
             .then((updatedUser) => res.send(updatedUser))
             .catch(next)
     },

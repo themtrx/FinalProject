@@ -11,6 +11,7 @@ import Login from './pages/login'
 import Unpublished from './pages/unpublished'
 import ErrorPage from './pages/errorPage'
 import UserContext from './services/context'
+import ProfilePage from './pages/profile'
 
 
 class Routing extends Component {
@@ -23,7 +24,6 @@ class Routing extends Component {
     render(){
 
         const isLogged = this.context.loggedIn
-        console.log(isLogged);
         return (
             <BrowserRouter>
                 <Switch>
@@ -33,7 +33,7 @@ class Routing extends Component {
                     </Route>
                     <Route path='/meals/addMeal'/>
                     <Route path='/chefs'/>
-                    <Route path='/user/profile'/>
+                    <Route path='/user/profile/:id' component={ProfilePage}/>
                     <Route path='/user/login' component={Login}/>
                     <Route path='/user/register'component={Register}/>
                     <Route path='/user/logout'/>

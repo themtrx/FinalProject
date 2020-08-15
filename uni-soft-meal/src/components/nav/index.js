@@ -18,6 +18,7 @@ class Nav extends Component {
 
     checkLogin = () => {
         const isLogged = this.context.loggedIn
+        const userId = this.context.user._id
 
         if(isLogged){
             return (
@@ -26,7 +27,7 @@ class Nav extends Component {
                     <SiteLink addClass={style['link-add-style']} href='/meals/unpublished' title='Unpublished'/>
                     <SiteLink addClass={style['link-add-style']} href='/meals/addMeal' title='Add Meal'/>
                     <SiteLink addClass={style['link-add-style']} href='/chefs' title='Chefs'/>
-                    <SiteLink addClass={style['link-add-style']} href='/user/profile' title='My Profile'/>
+                    <SiteLink addClass={style['link-add-style']} href={`/user/profile/${userId}`} title='My Profile'/>
                     <SiteLink addClass={style['link-add-style']} href='/' onClick={this.onClick} title='Logout'/>
                 </Fragment>
             )

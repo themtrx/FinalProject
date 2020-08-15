@@ -12,14 +12,23 @@ class MealGrid extends Component {
     }
 
     getMeals() {
-        fetch(this.props.fetchURL)
-            .then((meals) => meals.json())
-            .then((meals) => {
-                this.setState({
-                    meals
+        if(this.props.fetchURL){
+            
+            fetch(this.props.fetchURL)
+                .then((meals) => meals.json())
+                .then((meals) => {
+                    this.setState({
+                        meals
+                    })
                 })
+                .catch((err) => console.log(err))
+        } else {
+            const meals = this.props.mealsArr
+            this.setState({
+                meals
             })
-            .catch((err) => console.log(err))
+            
+        }
     }
 
     componentDidMount(){
@@ -49,7 +58,7 @@ class MealGrid extends Component {
                         imgUrl='https://via.placeholder.com/450x250'
                         title={meal.title}
                         category={meal.category}
-                        raiting={2.5} //meal.raiting
+                        raiting={meal.raiting} 
                         mealURL={this.props.mealURL}
                     />
                 </div>
