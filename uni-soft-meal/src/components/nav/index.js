@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react'
-import { browserHistory } from 'history'
 import SiteLink from '../link'
 import style from './index.module.css'
 import UserContext from '../../services/context'
+
 
 
 class Nav extends Component {
@@ -12,10 +12,8 @@ class Nav extends Component {
 
     static contextType = UserContext
 
-    onClick = (event) => {
-        event.preventDefault();
+    onClick = () => {
         this.context.logOut()
-        this.props.history.push('/')
     }
 
     checkLogin = () => {
@@ -26,10 +24,10 @@ class Nav extends Component {
                 <Fragment>
                     <SiteLink addClass={style['link-add-style']} href='/' title='Home'/>
                     <SiteLink addClass={style['link-add-style']} href='/meals/unpublished' title='Unpublished'/>
-                    <SiteLink addClass={style['link-add-style']} href='#' title='Add Meal'/>
-                    <SiteLink addClass={style['link-add-style']} href='#' title='Chefs'/>
-                    <SiteLink addClass={style['link-add-style']} href='#' title='My Profile'/>
-                    <SiteLink addClass={style['link-add-style']} href='/user/logout' onClick={this.onClick} title='Logout'/>
+                    <SiteLink addClass={style['link-add-style']} href='/meals/addMeal' title='Add Meal'/>
+                    <SiteLink addClass={style['link-add-style']} href='/chefs' title='Chefs'/>
+                    <SiteLink addClass={style['link-add-style']} href='/user/profile' title='My Profile'/>
+                    <SiteLink addClass={style['link-add-style']} href='/' onClick={this.onClick} title='Logout'/>
                 </Fragment>
             )
         }else {
