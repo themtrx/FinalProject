@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react'
 import style from './index.module.css'
 
-const Button = ({type ,name}) =>{
+const Button = ({type ,name, handleClick}) =>{
     return(
         <Fragment>
-            <button className={style.button} type={type}>{name}</button>
+            <button className={style.button} onClick={handleClick} type={type}>{name}</button>
         </Fragment>
     )
 }

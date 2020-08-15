@@ -8,7 +8,7 @@ class AuthHandle extends Component {
 
         this.state = {
             loggedIn: null,
-            user: null
+            user: {}
         }
     }
 
@@ -24,7 +24,7 @@ class AuthHandle extends Component {
 
         this.setState({
             loggedIn: false,
-            user: null
+            user: {}
         })
     }
 
@@ -45,12 +45,16 @@ class AuthHandle extends Component {
                 'Content-Type': 'application/json'
             }
         })
-        .then((res) => res.json())
         .then((res) => {
-
+            return res.json()
+        })
+        .then((res) => {
+            
             if(res.status) {
+                const {user} = res
+
                 this.logIn({
-                    user: res.user
+                    ...user
                 })
             }else {
                 this.logOut()

@@ -27,30 +27,6 @@ const userSchema = new Schema({
         required: true,
         default: false
     },
-    name: {
-        type: String,
-        default: '',
-    },
-    email:{
-        type: String,
-        default: ''
-    },
-    birthday: {
-        type: Date,
-        default: new Date().toISOString()
-    },
-    gender: {
-        type: String,
-        enum: ['male', 'female']
-    },
-    country: {
-        type: String,
-        default: ''
-    },
-    city: {
-        type: String,
-        default: ''
-    },
     experience: {
         type: String,
         default: '0/100'
@@ -69,20 +45,9 @@ const userSchema = new Schema({
                 'Head Chef',
                 'Executive Chef']
     },
-    viewedMeals: {
-        type: Number,
-        default: 0
-    },
-    triedMeals: {
-        type: Number,
-        default: 0
-    },
-    reviewedMeals: {
-        type: Number,
-        default: 0
-    },
-    meals: [{type: ObjectId, ref: 'Meals'}],
-    comments: [{type: String}]
+    ratedMeals: [{type: ObjectId, ref: 'Meal'}],
+    reviewedMeals:[{type: ObjectId, ref: 'Meal'}],
+    meals: [{type: ObjectId, ref: 'Meal'}]
 });
 
 userSchema.methods = {
