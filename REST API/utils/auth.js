@@ -5,7 +5,8 @@ const models = require('../models');
 module.exports = (redirectAuthenticated = true) => {
 
     return function (req, res, next) {
-        const token = req.cookies[config.authCookieName] || '';
+        // const token = req.cookies[config.authCookieName] || '';
+        const token = req.headers.authorization || '';
 
         Promise.all([
             jwt.verifyToken(token),

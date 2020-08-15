@@ -46,8 +46,8 @@ module.exports = {
             cookTime,
             servings,
             category,
-            ingredients,
             preparation,
+            imgUrl
         } = req.body;
         const { _id } = req.user;
 
@@ -58,8 +58,8 @@ module.exports = {
             cookTime,
             servings,
             category,
-            ingredients,
             preparation,
+            imgUrl,
             author: _id })
             .then((createdMeal) => {
                 return Promise.all([

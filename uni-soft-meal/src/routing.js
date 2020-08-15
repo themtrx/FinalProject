@@ -12,6 +12,7 @@ import Unpublished from './pages/unpublished'
 import ErrorPage from './pages/errorPage'
 import UserContext from './services/context'
 import ProfilePage from './pages/profile'
+import AddMeal from './pages/addMeal'
 
 
 class Routing extends Component {
@@ -31,7 +32,7 @@ class Routing extends Component {
                     <Route path='/meals/unpublished' component={Unpublished}>
                         {isLogged? (<Unpublished/>) : <Redirect to='/user/login'/>}
                     </Route>
-                    <Route path='/meals/addMeal'/>
+                    <Route path='/meals/addMeal' component={AddMeal}/>
                     <Route path='/chefs'/>
                     <Route path='/user/profile/:id' component={ProfilePage}/>
                     <Route path='/user/login' component={Login}/>
