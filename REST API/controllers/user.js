@@ -30,6 +30,34 @@ module.exports = {
                 .catch(next)
         },
 
+        verifyUser: (req, res, next) => {
+            const token = req.body.token || '';
+
+            Promise.all([
+                utils.jwt.verifyToken(token),
+                models.TokenBlacklist.findOne({ token })
+            ])
+                .then(([data, blacklistToken]) => {
+                    if (blacklistToken) { return Promise.reject(new Error('blacklisted token')) }
+
+                    models.User.findById(data.id)
+                        .then((user) => {
+                            res.send({
+                                status: true,
+                                user
+                            })
+                        });
+                })
+                .catch(err => {
+                    if (['token expired', 'blacklisted token', 'jwt must be provided'].includes(err.message)) {
+                        res.status(401).send('UNAUTHORIZED!');
+                        return;
+                    }
+
+                    res.send(false)
+                })
+        },
+
         login: (req, res, next) => {
             const { username, password } = req.body;
             models.User.findOne({ username })
