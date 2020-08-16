@@ -9,6 +9,7 @@ import style from './index.module.css'
 import formImage from '../../images/Login.png'
 import authRequest from '../../services/auth'
 import UserContext from '../../services/context'
+import { toast } from 'react-toastify';
 
 
 class Login extends Component {
@@ -39,10 +40,16 @@ class Login extends Component {
 
         authRequest('http://localhost:9999/api/user/login', {username, password})
         .then((user) => {
-            this.context.logIn(user)
-            this.props.history.push('/')
+            if(user){
+                this.context.logIn(user)
+                this.props.history.push('/')
+            }else {
+                toast.error('Your username or password is wrong!')
+            }
         })
-        .catch((err) => console.log(err))
+        .catch((err) => {
+            toast.error('Your username or password is wrong!')
+        })
     }
 
     render(){

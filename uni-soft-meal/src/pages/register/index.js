@@ -9,6 +9,7 @@ import Button from '../../components/button'
 import registerImage from '../../images/undraw_cooking_lyxy.png'
 import authRequest from '../../services/auth'
 import UserContext from '../../services/context'
+import { toast } from 'react-toastify';
 
 
 class Register extends Component {
@@ -38,12 +39,40 @@ class Register extends Component {
             password,
         } =  this.state
 
+        if(!this.checkPassword()) {
+            this.checkPassword()
+            return
+        }
+
+        if(username.length < 5||password.length < 5) {
+            toast.error('Username and password must be atleast 5 characters')
+            return
+        }
+
+
         authRequest('http://localhost:9999/api/user/register',{username, password})
         .then((user) => {
-            this.context.logIn(user)
-            this.props.history.push('/')
+            if(user) {
+                this.context.logIn(user)
+                this.props.history.push('/')
+            }else {
+                toast.error('Username already exists')
+            }
         })
-        .catch((err) => console.log(err))
+        .catch((err) => toast.error('Check your fields and try again'))
+    }
+
+    checkPassword = () => {
+        const {password,
+                rePassword
+            } = this.state
+
+            if(password!==rePassword){
+                toast.error('Password doesnt\'t match')
+                return false
+            }
+
+            return true
     }
 
     render(){

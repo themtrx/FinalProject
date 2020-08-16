@@ -26,7 +26,7 @@ class Nav extends Component {
                     <SiteLink addClass={style['link-add-style']} href='/' title='Home'/>
                     <SiteLink addClass={style['link-add-style']} href='/meals/unpublished' title='Unpublished'/>
                     <SiteLink addClass={style['link-add-style']} href='/meals/addMeal' title='Add Meal'/>
-                    <SiteLink addClass={style['link-add-style']} href='/chefs' title='Chefs'/>
+                    {/* <SiteLink addClass={style['link-add-style']} href='/chefs' title='Chefs'/> */}
                     <SiteLink addClass={style['link-add-style']} href={`/user/profile/${userId}`} title='My Profile'/>
                     <SiteLink addClass={style['link-add-style']} href='/' onClick={this.onClick} title='Logout'/>
                 </Fragment>

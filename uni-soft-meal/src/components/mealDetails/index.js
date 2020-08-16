@@ -96,7 +96,6 @@ const MealDetails = (props) => {
         })
         .catch((err) => console.log(err))
     }
-
     return (
         <Wrapper>
             <div className={style.mealDetails}>
