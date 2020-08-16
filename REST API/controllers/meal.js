@@ -79,7 +79,9 @@ module.exports = {
             .then(([modifiedObj, mealObj]) => {
                 res.send(mealObj);
             })
-            .catch(next);
+            .catch((err) => {
+                res.send(err)
+            });
     },
 
     put: (req, res, next) => {

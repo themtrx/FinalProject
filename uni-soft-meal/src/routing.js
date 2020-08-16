@@ -31,14 +31,22 @@ class Routing extends Component {
                 <Switch>
                     <Route path='/' exact component={Home}/>
                     <Route path='/meals/unpublished' component={Unpublished}>
-                        {isLogged? (<Unpublished/>) : <Redirect to='/user/login'/>}
+                        {isLogged ? (<Unpublished/>) : <Redirect to='/user/login'/>}
                     </Route>
-                    <Route path='/meals/addMeal' component={AddMeal}/>
+                    <Route path='/meals/addMeal' component={AddMeal}>
+                        {isLogged? (<AddMeal/>): <Redirect to='/user/login'/>}
+                    </Route>
                     <Route path='/meal/view/:id' component={ReviewMeal}/>
-                    <Route path='/chefs'/>
-                    <Route path='/user/profile/:id' component={ProfilePage}/>
-                    <Route path='/user/login' component={Login}/>
-                    <Route path='/user/register'component={Register}/>
+                    {/* <Route path='/chefs'/> */}
+                    <Route path='/user/profile/:id'>
+                        {isLogged? (<ProfilePage/>): <Redirect to='/user/login'/>}
+                    </Route>
+                    <Route path='/user/login'>
+                        {!isLogged? (<Login/>): <Redirect to='/'/>}  
+                    </Route>
+                    <Route path='/user/register'> 
+                        {!isLogged? (<Register/>): <Redirect to='/'/>}  
+                    </Route>
                     <Route path='/user/logout'/>
                     <Route component={ErrorPage}/>
                 </Switch>

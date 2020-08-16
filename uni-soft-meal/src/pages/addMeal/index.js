@@ -7,9 +7,11 @@ import Input from '../../components/input'
 import style from './index.module.css'
 import Button from '../../components/button'
 import cookieParse from '../../services/cookieParse'
+import { toast } from 'react-toastify';
+import { useHistory } from "react-router-dom";
 
-const AddMeal = (props) => {
-
+const AddMeal = () => {
+    const history = useHistory()
     const token = cookieParse.get('x-auth-token')
 
     const [title, setTitle] = useState('')
@@ -50,6 +52,14 @@ const AddMeal = (props) => {
             imgUrl
         }
 
+        Object.values(data).map((value) => {
+            if(!value){
+                toast.error('Please fill all fields and upload image')
+                return
+            }
+            return
+        })
+
         fetch('http://localhost:9999/api/meal', {
             method: 'POST', 
             headers: {
@@ -61,7 +71,7 @@ const AddMeal = (props) => {
         .then((res) => res.json())
         .then((meal) => {
             if(meal) {
-                props.history.push('/')
+               history.push('/')
             }
         })
         .catch((err) => console.log(err))

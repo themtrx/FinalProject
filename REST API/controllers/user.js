@@ -23,7 +23,9 @@ module.exports = {
                     const token = utils.jwt.createToken({ id: createdUser._id });
                     res.header('Authorization', token).send(createdUser);
                 })
-                .catch(next)
+                .catch((err) => {
+                    res.send(err)
+                })
         },
 
         verifyUser: (req, res, next) => {
@@ -67,7 +69,7 @@ module.exports = {
                     const token = utils.jwt.createToken({ id: user._id });
                     res.header('Authorization', token).send(user);
                 })
-                .catch(next);
+                .catch((err) => res.send(err));
         },
 
         logout: (req, res, next) => {
