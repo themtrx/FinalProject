@@ -35,6 +35,15 @@ module.exports = {
                     res.send(meals)
                 })
                 .catch(next);
+        },
+        currentMeal: (req, res, next) => {
+
+            const id = req.params.id;
+            models.Meal.findById(id).populate('author').lean()
+                .then((meal) => {
+                    res.send(meal)
+                })
+                .catch(next)
         }
     },
     post: (req, res, next) => {
@@ -74,9 +83,9 @@ module.exports = {
     },
 
     put: (req, res, next) => {
-        const id = req.params.id;
-        const { description } = req.body;
-        models.Meal.updateOne({ _id: id }, { description })
+        const id = req.params.id
+        const { published } = req.body;
+        models.Meal.updateOne({ _id: id }, { published })
             .then((updatedMeal) => res.send(updatedMeal))
             .catch(next)
     },

@@ -8,6 +8,8 @@ router.get('/unpublished', controllers.meal.get.getUnpublished); // implement au
 
 router.post('/', auth(), controllers.meal.post);
 
+router.get('/:id', auth(), controllers.meal.get.currentMeal);
+
 router.put('/:id', auth(), controllers.meal.put);
 
 router.delete('/:id', auth(), controllers.meal.delete);

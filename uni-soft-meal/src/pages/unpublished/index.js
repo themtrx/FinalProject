@@ -7,7 +7,7 @@ function Unpublished() {
   return (
     <div className={style.container}>
       <Wrapper>
-        <MealGrid mealURL={'meal/review'} fetchURL={'http://localhost:9999/api/meal/unpublished'} />
+        <MealGrid mealURL={'meal/view'} fetchURL={'http://localhost:9999/api/meal/unpublished'} />
       </Wrapper>
     </div>
   );
