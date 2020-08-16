@@ -13,7 +13,7 @@ const ReviewMeal = (props) => {
             <Wrapper>
                 <div className={style.notLogged}>
                     <h3>If you want to read this meal recepie, please go and <SiteLinks href='http://localhost:3000/user/register' title='Register'/></h3>
-                    <h3>Or if you already have account <SiteLinks href='http://localhost:3000/user/login' title='Login'/></h3>
+                    <h3>Or if you already have account <SiteLinks href='http://localhost:3000/user/login' title='Login' /></h3>
                 </div>
             </Wrapper>
         )

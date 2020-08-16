@@ -103,7 +103,7 @@ const MealDetails = (props) => {
                 <h2>{title}</h2>
                 <h3><span>Category: </span>{category}</h3>
                 <p><span>Author: </span>{author}</p>
-                <ReactStars size={30} value={Number(raiting)} edit={false}/>
+                <ReactStars size={30} value={Number(raiting)} edit={true}/>
                 <p><span>Complexity: </span>{complexity}</p>
                 <p><span>Preparation Time: </span>{prepTime}</p>
                 <p><span>Cooking Time: </span>{cookTime}</p>
