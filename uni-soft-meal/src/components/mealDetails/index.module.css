@@ -1,0 +1,7 @@
+.mealDetails {
+    text-align: center;
+}
+
+.mealDetails div{
+    display: inline-block !important;
+}

@@ -1,0 +1,10 @@
+.notLogged {
+    text-align: center;
+}
+.notLogged a{
+    display: inline-block;
+    color: #000;
+}
+.notLogged a:hover{
+    color: #ef6c5c;
+}
